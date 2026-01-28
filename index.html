@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+    </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b801fe993e479bb45fb4cd8b1333ec6a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+
+<style>
+.leaflet-control.event-dashboard {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 8px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.2;
+    width: 220px;
+    box-sizing: border-box;
+}
+
+.leaflet-control.event-dashboard .count {
+    font-size: 18px;
+    font-weight: 700;
+}
+.leaflet-control.event-dashboard .caption {
+    font-size: 12px;
+    opacity: 0.85;
+}
+</style>
+
+
+<style>
+.leaflet-control.online-dashboard {
+    margin-top: 8px; /* sits under the first dashboard */
+    background: rgba(255, 255, 255, 0.92);
+    padding: 8px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.2;
+    width: 220px;
+    box-sizing: border-box;
+}
+.leaflet-control.online-dashboard .count {
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+}
+.leaflet-control.online-dashboard .caption {
+    font-size: 12px;
+    opacity: 0.85;
+    cursor: pointer;
+    user-select: none;
+}
+.leaflet-control.online-dashboard .list {
+    margin-top: 8px;
+    display: none;
+    max-height: 220px;
+    overflow: auto;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 6px;
+}
+.leaflet-control.online-dashboard .item {
+    font-size: 12px;
+    padding: 4px 0;
+    white-space: normal;
+}
+.leaflet-control.online-dashboard .chev {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-left: 6px;
+}
+</style>
+
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_b801fe993e479bb45fb4cd8b1333ec6a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b801fe993e479bb45fb4cd8b1333ec6a = L.map(
+                "map_b801fe993e479bb45fb4cd8b1333ec6a",
+                {
+                    center: [30.0, 10.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7e33294d7086cfa0936473393f2bb7de = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_b801fe993e479bb45fb4cd8b1333ec6a);
+        
+    
+            
+
+// --- Event dashboard (top-left) ---
+var eventDashboard = L.control({position: 'topleft'});
+eventDashboard.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'leaflet-control event-dashboard');
+    div.innerHTML = '<div class="count" id="inPersonCount">52</div><div class="caption">in-person events</div>';
+    return div;
+};
+eventDashboard.addTo(map_b801fe993e479bb45fb4cd8b1333ec6a);
+
+
+// --- Online events dashboard (click to expand) ---
+var onlineEventsDashboard = L.control({position: 'topleft'});
+onlineEventsDashboard.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'leaflet-control online-dashboard');
+    div.innerHTML = ''
+        + '<div class="count" id="onlineCount">79<span class="chev" id="onlineChev">▾</span></div>'
+        + '<div class="caption" id="onlineCaption">online events</div>'
+        + '<div class="list" id="onlineList"><div class="item">11 Sep 2023 — <a href="https://developdiverse.com/" target="_blank">Develop Diverse — Presenting PROTECT and gender intersectionality needs</a></div><div class="item">12 Sep 2023 — <a href="https://bluemissionbanos.eu/" target="_blank">BlueMissionBanos — Key reference group meeting for citizen engagement</a></div><div class="item">27 Sep 2023 — <a href="https://www.bsac.dk/" target="_blank">BSAC (Baltic Sea Advisory Council) Working Group on Ecosystem Base Management</a></div><div class="item">4–9 Oct 2023 — IC WG BIODIV 2-2023</div><div class="item">23 Oct 2023 — <a href="https://environment.ec.europa.eu/topics/marine-environment/implementation-marine-strategy-framework-directive_en" target="_blank">Marine Strategy Coordination Group</a></div><div class="item">3 Nov 2023 — <a href="https://msp4bio.eu/" target="_blank">MSP4BIO project meeting</a></div><div class="item">9 Nov 2023 — <a href="https://www.ospar.org/meetings/archive/intersessional-correspondence-group-on-marine-protected-areas-5" target="_blank">ICG-MPA OSPAR meeting (Iceland)</a></div><div class="item">5 Dec 2023 — <a href="https://cruising.org/environmental-sustainability" target="_blank">CLIA Sustainability Advisory Committee meeting</a></div><div class="item">6 Dec 2023 — <a href="https://westmed-initiative.ec.europa.eu/events/1st-eu-blue-parks-community-workshop-december-6-2023-online/" target="_blank">EU Blue Parks Community workshop</a></div><div class="item">11 Dec 2023 — <a href="https://mpa-europe.eu/" target="_blank">MPA Europe — Baltic Stakeholder Conference discussions</a></div><div class="item">15 Dec 2023 — <a href="https://organismendemokratie.org/en/about/" target="_blank">Organisms Democracy — Cooperation discussions</a></div><div class="item">11 Jan 2024 — <a href="https://www.ccb.se/join-the-ccb-youth-group" target="_blank">Coalition Clean Baltic — Youth group discussions</a></div><div class="item">16 Feb 2024 — <a href="https://helcom.fi/save-the-baltic-sea-a-6000-km-hike-with-a-call-to-protect-the-baltic/" target="_blank">Save the Baltic expedition — Cooperation discussion</a></div><div class="item">15 Mar 2024 — <a href="https://coolbluefuture.org/" target="_blank">COOL BLUE — Project discussion</a></div><div class="item">15 Mar 2024 — <a href="https://mpa-guide.protectedplanet.net/" target="_blank">MPA Guide — Oregon State University meeting</a></div><div class="item">4 Apr 2024 — <a href="https://www.carnivalcorp.com/impact/sustainability/" target="_blank">Carnival Corporation — Cooperation meeting</a></div><div class="item">9 Apr 2024 — <a href="https://www.e-mergingartists.art/artist/club-real-organismendemokratie/" target="_blank">Club Real — HELCOM / PROTECT discussion</a></div><div class="item">10 Apr 2024 — <a href="https://merialuesuunnittelu.fi/en/" target="_blank">MSP Planning group of Finland</a></div><div class="item">12 Apr 2024 — <a href="https://www.wiomsa.org/" target="_blank">WIOMSA — PROTECT presentation</a></div><div class="item">24 Apr 2024 — <a href="https://www.bfn.de/en" target="_blank">Meeting with German national MPA managers</a> 2024</div><div class="item">30 Apr 2024 — <a href="https://mpaday.org" target="_blank">MPA Day — First catch up</a></div><div class="item">30 Apr 2024 — <a href="https://mpath.help/" target="_blank">MPAth — Tool demonstration</a></div><div class="item">2 May 2024 — <a href="https://www.naturemetrics.com/" target="_blank">NatureMetrics — Presentation of eDNA possibilities</a></div><div class="item">7 May 2024 — <a href="https://naturaconnect.eu/" target="_blank">NaturaConnect — Stakeholder engagement in conservation</a></div><div class="item">15 May 2024 — <a href="https://neccton.eu/" target="_blank">NECCTON — Collaboration between PROTECT and NECCTON</a></div><div class="item">28 May 2024 — <a href="https://www.ubc-sustainable.net/events/ubc-talks-about-eu-mission-restore-our-ocean-and-waters" target="_blank">UBC Talks about Mission Ocean</a></div><div class="item">3 Jun 2024 — <a href="https://www.havochvatten.se/en/start.html" target="_blank">Presentation to SwAM</a></div><div class="item">6 Jun 2024 — <a href="https://one-blue.eu/one-blue-project-will-be-presented-through-a-webinar-in-the-framework-of-the-european-green-week-2024/" target="_blank">ONE-BLUE webinar for EU Green Week</a></div><div class="item">12 Jun 2024 — <a href="https://storymaps.arcgis.com/stories/7e7a3b2b4d6f4e8c849d15a01168656f" target="_blank">Hopespot Gotland — MPA Day contact</a></div><div class="item">1 Jul 2024 — <a href="https://www.uu.se/en/collaboration-innovation/blue-centre-gotland" target="_blank">Blue Centre Gotland — MPA Day contact</a></div><div class="item">11 Jul 2024 — <a href="https://blue4all.eu/" target="_blank">Blue4all</a> and <a href="https://msp4bio.eu/" target="_blank">MSP4BIO</a>— ecosystem services presentation</div><div class="item">18 Sep 2024 — <a href="https://www.metsa.fi/projekti/biodiversea/" target="_blank">Biodiversea — Presenting PROTECT to Biodiversea group</a></div><div class="item">27 Sep 2024 — <a href="https://www.sgu.se/en/" target="_blank">SGU — Meeting between Swedish Geological Survey and WP2 and WP3</a></div><div class="item">1 Oct 2024 — <a href="https://submariner-network.eu/event/project-kickoff-blue-connect/" target="_blank">Blue Connect kickoff meeting</a></div><div class="item">1 Oct 2024 — <a href="https://climarest.eu/" target="_blank">Climarest — Meeting between Climarest and WP6</a></div><div class="item">3 Oct 2024 — <a href="https://elinvoimakeskus.fi//web/guest" target="_blank">Ely Keskus — Chat about Meren aarteet game</a></div><div class="item">7–10 Oct 2024 — IC WG BIODIV 4-2024</div><div class="item">8 Oct 2024 — <a href="https://www.au-ibar.org/" target="_blank">African Union InterAfrican Bureau for Animal resources</a></div><div class="item">10 Oct 2024 — <a href="https://mpacommunity.network/" target="_blank">MPA Community Network — Initial discussion about Network and PROTECT participation</a></div><div class="item">11 Oct 2024 — <a href="https://www.europarc.org/about-us/europarc-projects/life-pame-europe/" target="_blank">PAME Europe project — Meeting between PAME Europe project manager and WP6 Management</a></div><div class="item">5 Nov 2024 — <a href="https://www.ices.dk/community/groups/Pages/WGMPAS.aspx" target="_blank">Working Group on Marine Protected Areas and other Spatial Conservation Measures (WGMPAS) meeting</a></div><div class="item">13 Nov 2024 — <a href="https://www.munkka.fi/baltic-sea-youth-forum-bsyf-6-11-7-11-2025-munkkiniemen-yhteiskoulussa-paiva-ii/" target="_blank">Munkkiniemi High School — Further discussions about youth engagement</a></div><div class="item">25–26 Nov 2024 — <a href="https://www.bfn.de/en" target="_blank">German national MPA managers of the Baltic Sea</a></div><div class="item">4 Dec 2024 — <a href="https://protectbaltic.eu/ncm-webinar" target="_blank">Nordic Council of Ministers — Cost-effective restoration webinar</a></div><div class="item">10 Dec 2024 — <a href="https://www.ecologic.eu/19870" target="_blank">Climate-Ready Marine Protected Areas: Building Resilience and Supporting Marine Adaptation</a></div><div class="item">11 Dec 2024 — <a href="https://www.uu.se/en/collaboration-innovation/blue-centre-gotland" target="_blank">Blue Centre Gotland — Intro for BCG as Associate partner to PROTECT</a></div><div class="item">17 Dec 2024 — <a href="https://blueconnect-project.eu/" target="_blank">Blue Connect — Optimization Framework being presented to Blue Connect</a></div><div class="item">22 Jan 2025 — <a href="https://www.linkedin.com/posts/helcominfo_ecosferabaltica-activity-7287761113193095169-T1za/" target="_blank">Munkkiniemi High School — School visit to HELCOM</a></div><div class="item">3 Feb 2025 — IC EG ESA 7-2025</div><div class="item">24 Feb 2025 — <a href="https://blueconnect-project.eu/" target="_blank">Blue Connect meeting</a></div><div class="item">11 Mar 2025 — <a href="https://www.munkka.fi/baltic-sea-youth-forum-bsyf-6-11-7-11-2025-munkkiniemen-yhteiskoulussa-paiva-ii/" target="_blank">Munkkiniemi High School — HELCOM/PROTECT visit to school</a></div><div class="item">12 Mar 2025 — <a href="https://www.ascobans.org/news/21st-meeting-ascobans-jastarnia-group" target="_blank">ASCOBANS Jastarnia Group</a></div><div class="item">14 Mar 2025 — IC EG MPA 6-2025</div><div class="item">14 Mar 2025 — <a href="https://protectbaltic.eu/news/f/let%E2%80%99s-sea-the-change-tackling-ecophobia-through-education" target="_blank">University of Helsinki — Course for MA students on tackling ecophobia</a></div><div class="item">17 Mar 2025 — <a href="https://www.uniarts.fi/en/" target="_blank">UniArts — Follow up on HELCOM collaboration / MPA Day engagement</a></div><div class="item">18 Mar 2025 — IC EN CLIME 7-2025</div><div class="item">20 Mar 2025 — <a href="https://maritime-forum.ec.europa.eu/theme/ocean-literacy-and-blue-skills/ocean-literacy/eu4ocean-coalition_en" target="_blank">EU4Ocean — Meeting to discuss MPA Day with EU4Ocean</a></div><div class="item">7 Apr 2025 — Blue Centre Gotland — Presenting case studies for PROTECT BALTIC</div><div class="item">10 Apr 2025 — <a href="https://research-and-innovation.ec.europa.eu/research-area/environment/oceans-and-seas/eu-marine-strategy-framework-directive_en" target="_blank">EU Working Group on Programmes of Measures (POMESA)</a></div><div class="item">10 Apr 2025 — <a href="https://mpacommunity.network/protect-baltic/" target="_blank">MPA Community Network — Meeting on MoU for joining the network</a></div><div class="item">11 Apr 2025 — <a href="https://www.conservation.org/" target="_blank">Conservation International — Presenting to Paula about PROTECT</a></div><div class="item">1 Aug 2025 — <a href="https://protectbaltic.eu/mpa-day-2025" target="_blank">MPA Day webinar</a></div><div class="item">12–13 Aug 2025 — IC EG MPA 8-2025</div><div class="item">3 Sep 2025 — <a href="https://protectbaltic.eu/3rd-annual-meeting" target="_blank">COBSEA — Presentation at PROTECT BALTIC annual meeting</a></div><div class="item">8 Sep 2025 — <a href="https://eng.mst.dk/" target="_blank">DEPA — Intro to PROTECT BALTIC for DEPA</a></div><div class="item">25 Sep 2025 — <a href="https://maritime-forum.ec.europa.eu/theme/ocean-literacy-and-blue-skills/ocean-literacy/eu4ocean-platform_en" target="_blank">EU4Ocean — Discussions with ocean literacy group</a></div><div class="item">29 Sep–3 Oct 2025 — IC JWG Bird 2025</div><div class="item">3 Oct 2025 — IC EG ESA 8-2025</div><div class="item">8 Oct 2025 — IC WG BIODIV 6-2025</div><div class="item">14 Oct 2025 — <a href="https://www.unep.org/cobsea/events/webinar/knowledge-exchange-webinar-between-regional-seas-conventions-and-action-plans" target="_blank">SwAM webinar - Sharing lessons on ocean governance</a></div><div class="item">15–17 Oct 2025 — IC HELCOM-VASAB MSP WG 7-2025</div><div class="item">20 Oct 2025 — IC EN CLIME 8-2025</div><div class="item">11 Nov 2025 — <a href="https://www.ccb.se/event/2025-ccb-annual-conference" target="_blank">Coalition Clean Baltic Annual Conference</a></div><div class="item">12 Nov 2025 — <a href="https://www.hi.no/en/hi/forskning/projects/marhab-the-marine-habitats-project" target="_blank">MARHAB — Developing plan to present PROTECT BALTIC and MARHAB at 2027 ICES</a></div><div class="item">17 Nov 2025 — <a href="https://mpacommunity.network/" target="_blank">MPA Community Network — Plan for EMD 2026 workshop</a></div><div class="item">19 Nov 2025 — <a href="https://projects.research-and-innovation.ec.europa.eu/en/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/eu-missions-horizon-europe/restore-our-ocean-and-waters/5th-eu-blue-parks-community-workshop-achieving-mission-ocean-and-waters-protection-targets" target="_blank">5th EU Blue Parks Community Workshop</a></div><div class="item">20 Nov 2025 — <a href="https://www.seamoreeco.se/news/final-seminar/" target="_blank">SeaMoreEco final project meeting</a></div><div class="item">25–27 Nov 2025 — IC EG MaMA 4-2025</div><div class="item">22 Jan 2026 — IC EG RedCore 10-2026</div></div>';
+    // prevent map drag/zoom when interacting with the control
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.disableScrollPropagation(div);
+    return div;
+};
+onlineEventsDashboard.addTo(map_b801fe993e479bb45fb4cd8b1333ec6a);
+
+(function() {
+    var list = document.getElementById('onlineList');
+    var chev = document.getElementById('onlineChev');
+    function toggle() {
+        var open = list.style.display === 'block';
+        list.style.display = open ? 'none' : 'block';
+        chev.textContent = open ? '▾' : '▴';
+    }
+    document.getElementById('onlineCount').addEventListener('click', toggle);
+    document.getElementById('onlineCaption').addEventListener('click', toggle);
+})();
+// -----------------------------------------------
+
+
+// ---------------------------------
+
+
+
+// --- Dynamic event counter (counts ALL entries listed in marker popups) ---
+(function() {
+    function countAllPopupEntries() {
+        var total = 0;
+        if (typeof marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034 === 'undefined' || !marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034) return total;
+
+        marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034.eachLayer(function(layer) {
+            if (!layer || !layer.getPopup) return;
+            var popup = layer.getPopup();
+            if (!popup) return;
+            var content = popup.getContent ? popup.getContent() : '';
+            if (!content) return;
+
+            // Each bullet entry begins after a '•' in the popup HTML
+            var parts = String(content).split('•');
+            for (var i = 1; i < parts.length; i++) {
+                var plain = parts[i].replace(/<[^>]*>/g, '').trim();
+                if (!plain) continue;
+                total += 1;
+            }
+        });
+        return total;
+    }
+
+    function update() {
+        var el = document.getElementById('inPersonCount');
+        if (!el) return;
+        el.textContent = String(countAllPopupEntries());
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(update, 0); });
+    } else {
+        setTimeout(update, 0);
+    }
+})();
+// ------------------------------------------------------------------------
+var marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034 = L.markerClusterGroup(
+                {}
+            );
+            map_b801fe993e479bb45fb4cd8b1333ec6a.addLayer(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+
+        
+            var circle_marker_3135f0dc9d6784671bb6b48c395a82ee = L.circleMarker(
+                [59.86, 17.64],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+            
+
+        
+    
+            
+            circle_marker_3135f0dc9d6784671bb6b48c395a82ee.bindPopup(
+                `<div>
+                     <b>Uppsala, Sweden</b><br>• 28-29 Apr 2025 — <a href="https://si.se/en/projects-granted-funding/best-marine-baltic-sea-ecosystem-services-applications-transboundary-support-to-the-sustainable-use-of-marine-resources/" target="_blank">BEST project ecosystem services workshop</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+
+var circle_marker_5e0ca7d08bcd4ac9d8d88f34879d4019 = L.circleMarker(
+                [54.31, 13.09],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_5e0ca7d08bcd4ac9d8d88f34879d4019.bindPopup(
+                `<div>
+                     <b>Stralsund, Germany</b><br>• 18-22 Sep 2023 — <a href=\"https://www.monitoringzentrum.de/en/events/progress-marine-conservation-2023-how-stop-biodiversity-loss-knowledge-action\" target=\"_blank\" rel=\"noopener\">PMC conference</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_8afe389a08824cb8695a1070224b7744 = L.circleMarker(
+                [41.12, 1.25],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_8afe389a08824cb8695a1070224b7744.bindPopup(
+                `<div>
+                     <b>Tarragona, Spain</b><br>• 18-22 Sep 2023 — Global Conference & Networks Twinning Workshop (EU Ocean Governance)
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_d3a0478d4c8476814ec93f82e0a0b3e5 = L.circleMarker(
+                [55.64, 12.08],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_d3a0478d4c8476814ec93f82e0a0b3e5.bindPopup(
+                `<div>
+                     <b>Roskilde, Denmark</b><br>• 26-28 Sep 2023 — MPA MaNET 2023 workshop
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_98d50749710dcc111c711f68ac11bfb2 = L.circleMarker(
+                [55.68, 12.57],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_98d50749710dcc111c711f68ac11bfb2.bindPopup(
+                `<div>
+                     <b>Copenhagen, Denmark</b><br>• 6–8 May 2024 — IC WG BIODIV 3-2024
+                 </div><br>• 4-8 Nov 2024 — <a href=\"https://www.ices.dk/community/groups/Pages/WGMHM.aspx\" target=\"_blank\">ICES Working Group on Marine Habitat Mapping (WGMHM)</a><br>• 4-7 Nov 2025 — <a href=\"https://www.ices.dk/community/groups/Pages/WGMHM.aspx\" target=\"_blank\">ICES Working Group on Marine Habitat Mapping (WGMHM)</a><br>• 4-7 Mar 2025 — <a href=\"https://www.ices.dk/community/groups/Pages/WKREST.aspx\" target=\"_blank\">ICES Workshop on Nature Restoration and Recovery (WKREST)</a></div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_fafee4dfa1f519968ce7921eed0723c0 = L.circleMarker(
+                [56.95, 24.11],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_fafee4dfa1f519968ce7921eed0723c0.bindPopup(
+                `<div>
+                     <b>Riga, Latvia</b><br>• 24–25 Oct 2023 — IC HELCOM-VASAB MSP WG 3-2023<br>• 8-10 Nov 2023 — <a href=\"https://biogeoprocess.net/balticregion/\" target=\"_blank\" rel=\"noopener\">Baltic BioGeographical Seminar</a><br>• 23–24 Apr 2024 — IC HELCOM 2-2024<br>• 25-26 Apr 2024 — <a href=\"https://bluemissionbanos.eu/arena-2/\" target=\"_blank\" rel=\"noopener\">2nd Blue Mission Arena of the Mission Ocean</a><br>• 28–30 Oct 2025 — IC WG MARITIME 4-2025<br>• 28-30 Oct 2025 — <a href=\"https://reef.daba.gov.lv/public/eng/conference/\" target=\"_blank\">LIFE-REEF Final conference</a></div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_55937afb05abf39889bb782d237decd2 = L.circleMarker(
+                [57.71, 11.97],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_55937afb05abf39889bb782d237decd2.bindPopup(
+                `<div>
+                     <b>Gothenburg, Sweden</b><br>• 14-16 Nov 2023 — <a href=\"https://bluemissionbanos.eu/1st-mission-arena-after-event-materials/\" target=\"_blank\" rel=\"noopener\">1st Blue Mission Arena of the Mission Ocean</a><br>• 19–21 Mar 2024 — <a href=\"https://vasab.org/event/eusbsr-policy-area-spatial-planning-steering-group-meeting-on-maritime-spatial-planning-in-gothenburg-sweden/\" target=\"_blank\" rel=\"noopener\">IC HELCOM-VASAB MSP WG 4-2024</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_f39635b124b8656efba8dda05793591f = L.circleMarker(
+                [56.03, 14.16],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_f39635b124b8656efba8dda05793591f.bindPopup(
+                `<div>
+                     <b>Kristianstad, Sweden</b><br>• 16–19 Jun 2025 — <a href=\"https://vattenriket.kristianstad.se/youthforum/\" target=\"_blank\" rel=\"noopener\">Waves for Change – Youth for Baltic 2025</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_44022dec029d3e46ba679b52bb450cf1 = L.circleMarker(
+                [44.49, 11.34],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_44022dec029d3e46ba679b52bb450cf1.bindPopup(
+                `<div>
+                     <b>Bologna, Italy</b><br>• 13 Feb 2024 — <a href=\"https://euromarinenetwork.eu/news/euromarine-open-science-day-and-general-assembly-2024/\" target=\"_blank\" rel=\"noopener\">EuroMarine Open Science Day 2024</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_a14f88d91967acbdf044644db8d2d5ea = L.circleMarker(
+                [50.85, 4.35],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_a14f88d91967acbdf044644db8d2d5ea.bindPopup(
+                `<div>
+                     <b>Brussels, Belgium</b><br>• 6 Mar 2025 — <a href=\"https://projects.research-and-innovation.ec.europa.eu/en/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/eu-missions-horizon-europe/restore-our-ocean-and-waters/4th-eu-blue-parks-community-workshop-strict-protection-european-seas-how-it-helps-people-and-nature\" target=\"_blank\" rel=\"noopener\">EU 4th Blue Parks Community workshop</a><br>• 8-9 Oct 2025 — <a href=\"https://green-forum.ec.europa.eu/events/eu-wide-implementation-support-event-site-specific-conservation-objectives-marine-natura-2000-sites-2025-10-08_en\" target=\"_blank\">Site-specific conservation objectives (SSCOs) for marine Natura 2000 sites</a></div><br>• 4-6 March 2024 — <a href=\"https://maritime-forum.ec.europa.eu/theme/governance/european-ocean-days_en\" target=\"_blank\" rel=\"noopener\">European Ocean Days – Mission Restore our Ocean and Waters</a></div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_692f270530840883e3dbbd335ee00f35 = L.circleMarker(
+                [53.95, 14.17],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_692f270530840883e3dbbd335ee00f35.bindPopup(
+                `<div>
+                     <b>Heringsdorf, Germany</b><br>• 5-6 March 2024 — <a href=\"https://www.europarc.org/news/2023/11/save-the-date-siggen-seminar-2024-on-marine-protected-areas/\" target=\"_blank\" rel=\"noopener\">EUROPARC Siggen Seminar on Management Effectiveness in MPAs</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_4af4d93203e9f30cd1bc5e57dcbef297 = L.circleMarker(
+                [44.41, 8.93],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_4af4d93203e9f30cd1bc5e57dcbef297.bindPopup(
+                `<div>
+                     <b>Genoa, Italy</b><br>• 11-12 March 2024 — <a href=\"https://cruising.org/news/save-date-clias-annual-european-summit-inaugural-clia-innovation-expo-genoa-11-14-march-2024/\" target=\"_blank\" rel=\"noopener\">Cruise Line International Association Expo</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_e1a46f32a728ef74d42bd5be91be8acc = L.circleMarker(
+                [41.39, 2.17],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_e1a46f32a728ef74d42bd5be91be8acc.bindPopup(
+                `<div>
+                     <b>Barcelona, Spain</b><br>• 10-12 April 2024 — <a href=\"https://oceandecade.org/events/2024-ocean-decade-conference/\" target=\"_blank\" rel=\"noopener\">Ocean Decade Conference (Barcelona)</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );var circle_marker_322d9273e7305d017f27d40a81558e85 = L.circleMarker(
+                [53.55, 10.0],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_322d9273e7305d017f27d40a81558e85.bindPopup(
+                `<div>
+                     <b>Hamburg, Germany</b><br>• 4 Jun 2024 — Carnival Corporation Environmental Conference
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_9a2f5f45d5eeaa5edc35ac834df2eb93 = L.circleMarker(
+                [59.92, 22.39],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_9a2f5f45d5eeaa5edc35ac834df2eb93.bindPopup(
+                `<div>
+                     <b>Kasnäs, Finland</b><br>• 15-16 Aug 2024 — <a href=\"https://www.apelago.fi/events/apelago-initiative-2024/\" target=\"_blank\" rel=\"noopener\">A'Pelago Initiative 2024 – Reclaiming the Sea</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_cbea6d7fad06954dd9fb02e7e0a40637 = L.circleMarker(
+                [58.38, 26.72],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_cbea6d7fad06954dd9fb02e7e0a40637.bindPopup(
+                `<div>
+                     <b>Tartu, Estonia</b><br>• 26-30 Aug 2024 — <a href=\"https://sere2024.org/\" target=\"_blank\" rel=\"noopener\">14th European Conference on Ecological Restoration</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_6382ef76ef06e54e716f06f930796047 = L.circleMarker(
+                [59.57, 25.73],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_6382ef76ef06e54e716f06f930796047.bindPopup(
+                `<div>
+                     <b>Lahemaa, Estonia</b><br>• 16-19 Sep 2024 — MPA MaNET 2024 workshop
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_25e175632d33b1a2187558d8449a9bdf = L.circleMarker(
+                [53.08, 8.8],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_25e175632d33b1a2187558d8449a9bdf.bindPopup(
+                `<div>
+                     <b>Bremen, Germany</b><br>• 16-20 Sep 2024 — <a href=\"https://www.icymare.com/about-the-conference/past-conferences/icymare-2024-bremen/icymare-2024-bremen-retrospective/\" target=\"_blank\" rel=\"noopener\">International Conference for Young Marine Researchers (ICYMARE)</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_0f85622e9c1c128ace80a41137685214 = L.circleMarker(
+                [60.17, 24.94],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_0f85622e9c1c128ace80a41137685214.bindPopup(
+                `<div>
+                     <b>Helsinki, Finland</b><br>• 9–12 May 2023 — IC WG BIODIV 1-2023<br>• 18 Sep 2024 — <a href=\"https://www.metsa.fi/en/project/biodiversea-eng/\" target=\"_blank\" rel=\"noopener\">Biodiversea project meeting</a><br>• 11–12 Dec 2024 — IC HOD 6-2024<br>• 6-7 Nov 2025 — Baltic Sea Youth Forum<br>• 16–17 Dec 2025 — IC HOD 8-2025
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_29d162717749b27ff6c308eea28201a5 = L.circleMarker(
+                [59.44, 24.75],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_29d162717749b27ff6c308eea28201a5.bindPopup(
+                `<div>
+                     <b>Tallinn, Estonia</b><br>• 13–16 May 2025 — IC WG BIODIV 5-2025<br>• 18–20 Nov 2025 — WG GEAR 9-2025
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_e657f5349bc96f194134771e00950c41 = L.circleMarker(
+                [51.21, 3.22],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_e657f5349bc96f194134771e00950c41.bindPopup(
+                `<div>
+                     <b>Bruges, Belgium</b><br>• 30 Sep - 3 Oct 2024 — <a href=\"https://engage.iucn.org/group/652/home\" target=\"_blank\" rel=\"noopener\">IUCN Regional Conservation Forum (RFC)</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_0d8c083e2c58613af68181114f8b0d12 = L.circleMarker(
+                [53.27, -9.05],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_0d8c083e2c58613af68181114f8b0d12.bindPopup(
+                `<div>
+                     <b>Galway, Ireland</b><br>• 12-14 Nov 2024 — <a href=\"https://www.ospar.org/meetings/archive/intersessional-correspondence-group-on-marine-protected-areas-6\" target=\"_blank\" rel=\"noopener\">OSPAR ICG-MPA meeting</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_0b0499913b4868ed384ebe8a2ec5cc02 = L.circleMarker(
+                [55.71, 21.14],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_0b0499913b4868ed384ebe8a2ec5cc02.bindPopup(
+                `<div>
+                     <b>Klaipėda, Lithuania</b><br>• 24-28 Mar 2025 — <a href=\"https://www.baltic.earth/events/details/e115039\" target=\"_blank\" rel=\"noopener\">Baltic Earth Winter School for Young Scientists</a><br>• 15-18 Sep 2025 — <a href=\"https://www.ices.dk/events/asc/2025/Pages/default.aspx\" target=\"_blank\" rel=\"noopener\">ICES Annual Science Conference</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_a89aad0e2c948de2cabc01b27facf720 = L.circleMarker(
+                [54.44, 18.56],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_a89aad0e2c948de2cabc01b27facf720.bindPopup(
+                `<div>
+                     <b>Sopot, Poland</b><br>• 28-30 Apr 2025 — <a href=\"https://bluemissionbanos.eu/4th-mission-arena/\" target=\"_blank\">4th Blue Mission Arena of the Mission Ocean</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_8e5738e59e83fc54436f935b825ad6d2 = L.circleMarker(
+                [43.71, 7.26],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_8e5738e59e83fc54436f935b825ad6d2.bindPopup(
+                `<div>
+                     <b>Nice, France</b><br>• 9-13 June 2025 — <a href=\"https://protectbaltic.eu/un-ocean-conference-2025/\" target=\"_blank\" rel=\"noopener\">UN Ocean Conference 2025</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_a56fafc5ee4d27276487a15b8f7fde87 = L.circleMarker(
+                [56.95, 23.48],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_a56fafc5ee4d27276487a15b8f7fde87.bindPopup(
+                `<div>
+                     <b>Ķemeri, Latvia</b><br>• 15-19 Sep 2025 — MPA MaNET 2025 workshop
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_ea866b96f93c63d3b58dbf4b5d90d730 = L.circleMarker(
+                [55.31, 10.8],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_ea866b96f93c63d3b58dbf4b5d90d730.bindPopup(
+                `<div>
+                     <b>Nyborg, Denmark</b><br>• 23-24 Sep 2025 — <a href=\"https://event.sdu.dk/missionoceaneu/\" target=\"_blank\" rel=\"noopener\">Mission Ocean EU Presidency Conference</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_928609a5b74cb345555a050ac3ddcd57 = L.circleMarker(
+                [54.6, 24.03],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_928609a5b74cb345555a050ac3ddcd57.bindPopup(
+                `<div>
+                     <b>Birštonas, Lithuania</b><br>• 7-10 Oct 2025 — <a href=\"https://www.europarc.org/training-and-events/europarc-conference/\" target=\"_blank\" rel=\"noopener\">EUROPARC Conference</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_713dfe4db88fc56690f78eecd58b65bc = L.circleMarker(
+                [52.52, 13.4],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_713dfe4db88fc56690f78eecd58b65bc.bindPopup(
+                `<div>
+                     <b>Berlin, Germany</b><br>• 3-4 Nov 2025 — <a href=\"https://www.ecologic.eu/20103\" target=\"_blank\">MEER:STARK project final event: Bridging Science and Policy – Exploring the Marine Protection and Climate Adaptation Nexus</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_4175c59321705549139e081b806e530f = L.circleMarker(
+                [54.32, 10.14],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_4175c59321705549139e081b806e530f.bindPopup(
+                `<div>
+                     <b>Kiel, Germany</b><br>• 5-6 Nov 2025 — <a href=\"https://winbigproject.eu/events/36/win-big-baltic-event/\" target=\"_blank\" rel=\"noopener\">WIN-BIG Baltic event: Empowering Women in the Baltic Blue Economy: Innovation, Growth, and Connection</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_3434e1a2b4386f57673f6fd028fcefc5 = L.circleMarker(
+                [53.35, -6.26],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_3434e1a2b4386f57673f6fd028fcefc5.bindPopup(
+                `<div>
+                     <b>Dublin, Ireland</b><br>• 12-14 Nov 2025 — Preparing National Restoration Plans (NRPs) under the nature restoration regulation (NRR), for marine environments
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_aac8a95306de00f070c355c352b445eb = L.circleMarker(
+                [55.95, -3.19],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_aac8a95306de00f070c355c352b445eb.bindPopup(
+                `<div>
+                     <b>Edinburgh, United Kingdom</b><br>• 15-18 Dec 2025 — <a href=\"https://www.britishecologicalsociety.org/content/bes-annual-meeting-2025/\" target=\"_blank\">British Ecological Society annual meeting</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_0513309b8d6172d7d943be95f15d7ab7 = L.circleMarker(
+                [-33.92, 18.42],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_0513309b8d6172d7d943be95f15d7ab7.bindPopup(
+                `<div>
+                     <b>Cape Town, South Africa</b><br>• 13-18 Oct 2024 — <a href=\"https://scbmarineprogram.org/meetings-imcc7/\" target=\"_blank\" rel=\"noopener\">International Marine Conservation Congress 7 (IMCC7)</a><br>• 17 Oct 2024 — PROTECT presentation – Two Oceans Aquarium
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_bb716aa71fd881116ad09aacf5e1ac8f = L.circleMarker(
+                [35.18, 129.07],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_bb716aa71fd881116ad09aacf5e1ac8f.bindPopup(
+                `<div>
+                     <b>Busan, South Korea</b><br>• 29 Apr 2025 — <a href=\"https://www.unep.org/cobsea/events/conference/10th-our-ocean-conference\" target=\"_blank\">COBSEA: 10th Our Ocean Conference</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            var circle_marker_3b6287cdf4b5815fd597fe406487bfe6 = L.circleMarker(
+                [45.42, -75.69],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+        
+    
+            circle_marker_3b6287cdf4b5815fd597fe406487bfe6.bindPopup(
+                `<div>
+                     <b>Ottawa, Canada</b><br>• 21-22 May 2025 — <a href=\"https://oceans-and-fisheries.ec.europa.eu/news/canada-and-eu-foster-cooperation-marine-conservation-second-ocean-partnership-forum-2025-06-10_en\" target=\"_blank\" rel=\"noopener\">EU–Canada Ocean Partnership Forum</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+        
+    
+            
+            var circle_marker_espoo_bsc2024 = L.circleMarker(
+                [60.1643665, 24.8378191],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+var circle_marker_arctic = L.circleMarker(
+    [69.6492, 18.9553],
+    {
+        "bubblingMouseEvents": true,
+        "color": "#3388ff",
+        "dashArray": null,
+        "dashOffset": null,
+        "fill": true,
+        "fillColor": "#3388ff",
+        "fillOpacity": 0.9,
+        "fillRule": "evenodd",
+        "lineCap": "round",
+        "lineJoin": "round",
+        "opacity": 1.0,
+        "radius": 8,
+        "stroke": true,
+        "weight": 1
+    }
+).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+circle_marker_arctic.bindPopup(
+    `<div>
+    <b>Tromsø, Norway</b><br>
+    • 13 Apr 2024 — <a href="https://arctic-council.org/" target="_blank">Arctic Council Meeting</a>
+    </div>`
+);
+
+
+            circle_marker_espoo_bsc2024.bindPopup(
+                `<div>
+                     <b>Espoo (Hanasaarenranta), Finland</b><br>• 29 Feb 2024 — <a href="https://protectbaltic.eu/bsc2024" target="_blank" rel="noopener">Baltic Stakeholder Conference 2024</a> (<a href="https://helcom.fi/helcom-at-work/events/helcom-stakeholders-confrences/bsc2024/" target="_blank" rel="noopener">HELCOM page</a>)
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+
+var layer_control_5158c1ab02033fd3c6e49b08e9317ed4 = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_7e33294d7086cfa0936473393f2bb7de,
+                },
+                overlays :  {
+                    "Event locations" : marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034,
+                },
+            };
+            L.control.layers(
+                layer_control_5158c1ab02033fd3c6e49b08e9317ed4.base_layers,
+                layer_control_5158c1ab02033fd3c6e49b08e9317ed4.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_b801fe993e479bb45fb4cd8b1333ec6a);
+        
+</script>
+</html>
