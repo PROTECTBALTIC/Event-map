@@ -9,14 +9,19 @@
         <script>
             L_NO_TOUCH = false;
             L_DISABLE_3D = false;
-    </script>
+    
+</script>
     
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js">
+</script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js">
+</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js">
+</script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
@@ -36,7 +41,8 @@
                 }
             </style>
         
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js">
+</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
 
@@ -226,7 +232,19 @@ var marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034 = L.markerClusterGroup(
             map_b801fe993e479bb45fb4cd8b1333ec6a.addLayer(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
 
         
-            var circle_marker_3135f0dc9d6784671bb6b48c395a82ee = L.circleMarker(
+            
+// --- Added in-person event: SOS Annual Meeting (Turku) ---
+var circle_marker_sos_turku = L.circleMarker(
+    [60.4518, 22.2666],
+    {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+circle_marker_sos_turku.bindPopup(
+                `<div>
+                     <b>Turku, Finland</b><br>• 16–17 Sep 2025 — <a href=\"https://sites.abo.fi/centre-for-sustainable-ocean-science/events/sos-annual-meeting/\" target=\"_blank\">SOS Annual Meeting</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+var circle_marker_3135f0dc9d6784671bb6b48c395a82ee = L.circleMarker(
                 [59.86, 17.64],
                 {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
             ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
@@ -766,5 +784,6 @@ var layer_control_5158c1ab02033fd3c6e49b08e9317ed4 = {
                 {"autoZIndex": true, "collapsed": true, "position": "topright"}
             ).addTo(map_b801fe993e479bb45fb4cd8b1333ec6a);
         
+
 </script>
 </html>
