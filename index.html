@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -687,6 +688,21 @@ var circle_marker_5e0ca7d08bcd4ac9d8d88f34879d4019 = L.circleMarker(
                  </div>`,
                 {"maxWidth": 420, "closeButton": true}
             );
+
+
+// --- Added in-person event: Oceans Sciences Meeting 2026 (Glasgow) ---
+var circle_marker_osm_glasgow = L.circleMarker(
+                [55.8642, -4.2518],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+
+            circle_marker_osm_glasgow.bindPopup(
+                `<div>
+                     <b>Glasgow, United Kingdom</b><br>• 22–27 Feb 2026 — <a href=\"https://www.agu.org/Ocean-Sciences-Meeting\" target=\"_blank\">Oceans Sciences Meeting 2026</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+// ---------------------------------------------------------------
         
     
             var circle_marker_0513309b8d6172d7d943be95f15d7ab7 = L.circleMarker(
