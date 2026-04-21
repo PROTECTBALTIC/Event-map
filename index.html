@@ -337,6 +337,21 @@ var marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034 = L.markerClusterGroup(
             );
             map_b801fe993e479bb45fb4cd8b1333ec6a.addLayer(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
 
+// --- Added in-person event: Blue Connect GA (Conil) ---
+var circle_marker_conil = L.circleMarker(
+                [36.2772, -6.0885],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "fillColor": "#3388ff", "fillOpacity": 0.9, "radius": 6}
+            ).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+
+            circle_marker_conil.bindPopup(
+                `<div>
+                     <b>Conil de la Frontera, Spain</b><br>• 14-16 Apr 2026 — <a href=\"https://blueconnect-project.eu/\" target=\"_blank\">Blue Connect General Assembly</a>
+                 </div>`,
+                {"maxWidth": 420, "closeButton": true}
+            );
+// ---------------------------------------------------------------
+
+
 // --- Added in-person event: Global MPA Capacity Network workshop (Taghazout) ---
 var circle_marker_taghazout = L.circleMarker(
                 [30.5430, -9.7080],
