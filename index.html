@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -934,6 +928,16 @@ circle_marker_blue_pathways_copenhagen.bindPopup(
 // Added hybrid event at its physical location
 var maritime_gothenburg = L.circleMarker([57.7089,11.9746], {color:'#3388ff',fillColor:'#3388ff',fillOpacity:0.9,radius:6}).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
 maritime_gothenburg.bindPopup('<div><b>Gothenburg, Sweden</b><br>• 23-25 Sep 2026 — IC WG MARITIME 5-2026</div>', {maxWidth:420,closeButton:true});
+// --- In-person event: Meeting with Swedish CAB Managers (Umeå) ---
+var circle_marker_cab_umea_2026 = L.circleMarker(
+    [63.8258, 20.2630],
+    {"bubblingMouseEvents": true, "color": "#3388ff", "fillColor": "#3388ff", "fillOpacity": 0.9, "radius": 6}
+).addTo(marker_cluster_70cb62903e1173ac4d5b6c11c2bbc034);
+circle_marker_cab_umea_2026.bindPopup(
+    '<div><b>Umeå, Sweden</b><br>• 3–4 Nov 2026 — Meeting with Swedish CAB Managers</div>',
+    {"maxWidth": 420, "closeButton": true}
+);
+
 var layer_control_5158c1ab02033fd3c6e49b08e9317ed4 = {
                 base_layers : {
                     "cartodbpositron" : tile_layer_7e33294d7086cfa0936473393f2bb7de,
